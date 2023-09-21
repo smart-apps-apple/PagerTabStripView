@@ -144,8 +144,6 @@ private struct WrapperPagerTabStripView<Content>: View where Content: View {
                     dataStore.items[i]?.tabViewDelegate?.setState(state: i == selection ? .selected : .normal)
                     dataStore.items[selection]?.appearCallback?()
                 }
-                
-                
             }
         }
         .modifier(NavBarModifier(selection: $selection))
