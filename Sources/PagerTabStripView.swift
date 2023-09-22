@@ -140,8 +140,10 @@ private struct WrapperPagerTabStripView<Content>: View where Content: View {
             }
             .onChange(of: dataStore.itemsCount) { _ in
                 self.selection = selection >= dataStore.itemsCount ? dataStore.itemsCount - 1 : selection
-                dataStore.items[selection]?.tabViewDelegate?.setState(state: .selected)
-                dataStore.items[selection]?.appearCallback?()
+                for (i, _) in dataStore.items.enumerated() {
+                    dataStore.items[i]?.tabViewDelegate?.setState(state: i == selection ? .selected : .normal)
+                    dataStore.items[selection]?.appearCallback?()
+                }
             }
         }
         .modifier(NavBarModifier(selection: $selection))
