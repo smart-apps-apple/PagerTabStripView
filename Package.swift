@@ -10,7 +10,8 @@ let package = Package(
     targets: [
         .target(
             name: "PagerTabStripView",
-            path: "Sources"
+            path: "Sources",
+            resources: [.process("PrivacyInfo.xcprivacy")]
         ),
         .testTarget(
             name: "PagerTabStripViewTests",
